@@ -21,23 +21,3 @@ def get_mask_account(number_card: int) -> str:
     mask_account = "**" + str(number_card)[-4:]
 
     return mask_account
-
-
-def mask_account_card(card_info: str) -> str:
-    """Функция обрабатывает информацию о картах и счетах
-    """
-    number_card = []
-    name_card = []
-    for char in card_info:
-        if char.isdigit():
-            number_card.append(char)
-        else:
-            name_card.append(char)
-
-    number_card = ''.join(number_card)
-    name_card = ''.join(name_card)
-    if len(number_card) == 16:
-        inform_about_card = name_card + get_mask_card_number(number_card)
-    elif len(number_card) == 20:
-        inform_about_card = name_card + get_mask_account(number_card)
-    return inform_about_card
