@@ -22,3 +22,14 @@ def mask_account_card(card_info: str) -> str:
         inform_about_card = new_name_card + get_mask_account(int(new_number_card))
 
     return inform_about_card
+
+def get_date(date):
+    """Функция изменяет формат даты на ДД.ММ.ГГГГ
+    """
+    number = date[8:10]
+    month = date[5:7]
+    year = date[0:4]
+
+    new_format_date = f"{number}.{month}.{year}"
+
+    return new_format_date
