@@ -23,7 +23,7 @@ def mask_account_card(card_info: str) -> str:
 
     return inform_about_card
 
-def get_date(date):
+def get_date(date: str) -> str:
     """Функция изменяет формат даты на ДД.ММ.ГГГГ
     """
     number = date[8:10]
