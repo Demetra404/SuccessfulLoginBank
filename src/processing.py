@@ -1,17 +1,20 @@
-def filter_by_state(bank_info: list[dict], state: str = 'EXECUTED') -> list[dict]:
+from typing import List, Dict
+
+
+def filter_by_state(transaction_data: List[Dict], state: str = 'EXECUTED') -> List[Dict]:
     """Функция возвращает новый список словарей, с указанным ключом state
     """
-    list_state = []
-    for index, info in enumerate(bank_info):
-        if info.get('state') == state:
-            list_state.append(bank_info[index])
+    data_by_state = []
+    for index_operation, operation_info in enumerate(transaction_data):
+        if operation_info.get('state') == state:
+            data_by_state.append(transaction_data[index_operation])
 
-    return list_state
+    return data_by_state
 
 
-def sort_by_date(not_sorted_info: list[dict], sort: bool = True) -> list[dict]:
-    """Функция возврает список отсортированный по дате
+def sort_by_date(client_transactions: List[Dict], sort: bool = True) -> List[Dict]:
+    """Функция возвращает список отсортированный по дате
     """
-    sorted_info = sorted(not_sorted_info, key=lambda date: date.get('date'), reverse=sort)
+    transactions_by_date = sorted(client_transactions, key=lambda date_operation: date_operation.get('date'), reverse=sort)
 
-    return sorted_info
+    return transactions_by_date
