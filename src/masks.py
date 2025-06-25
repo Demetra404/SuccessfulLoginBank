@@ -16,9 +16,11 @@ def get_mask_card_number(number_card: int) -> str | int:
         return new_mask_card_number
     return 0
 
+
 def get_mask_account(number_card: int) -> str | int:
     """Функция маскировки номера банковского счета
     """
+
     if len(str(number_card)) > 19:
         mask_account = "**" + str(number_card)[-4:]
 

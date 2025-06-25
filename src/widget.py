@@ -25,6 +25,8 @@ def mask_account_card(card_info: str) -> str | int:
 
         return inform_about_card
     return 0
+
+
 def get_date(date: str) -> str | int:
     """Функция изменяет формат даты на ДД.ММ.ГГГГ
     """
