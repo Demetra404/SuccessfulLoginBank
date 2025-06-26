@@ -12,3 +12,11 @@ def test_digit_info():
 @pytest.mark.parametrize('date_info, date_need', [('2024-03-11T02:26:18.671407', '11.03.2024'),('2023-11-12T06:36:20.654307', '12.11.2023'), ('', 0)])
 def test_get_date(date_info, date_need):
     assert get_date(date_info) == date_need
+
+@pytest.fixture
+def test_value():
+    return '21-05-2044111'
+
+
+def test_mask_account_card_fix(test_value):
+    assert mask_account_card(test_value) == 0

@@ -31,7 +31,7 @@ def get_date(date: str) -> str | int:
     """Функция изменяет формат даты на ДД.ММ.ГГГГ
     """
     date = str(date)
-    if date > '':
+    if date > '' and date[4] == '-':
         number = date[8:10]
         month = date[5:7]
         year = date[0:4]
