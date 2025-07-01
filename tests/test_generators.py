@@ -1,5 +1,6 @@
 import pytest
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+
 values_for_test = [
         {
             "id": 939719570,
@@ -89,8 +90,6 @@ def test_filter_currency(test_filter, test_currency, value_filter):
 def test_transaction_descriptions(test_transaction, description):
     status_transactions = transaction_descriptions(test_transaction)
     assert next(status_transactions) == description
-status_transactions = transaction_descriptions([])
-assert status_transactions == 0
 
 
 @pytest.mark.parametrize('value_start, value_stop, value_result', [(1, 5, '0000 0000 0000 0001')])
@@ -99,3 +98,14 @@ def test_card_number_generator(value_start, value_stop, value_result):
     assert next(test_generator) == value_result
     for number in card_number_generator(value_start, value_stop):
         print(number)
+
+
+@pytest.fixture
+def zero_value():
+    return []
+
+def test_transaction_descriptions_fix(zero_value):
+    assert transaction_descriptions(zero_value) == 0
+
+def test_filter_by_currency_fix(zero_value):
+    assert filter_by_currency(zero_value, 'USD') == 0

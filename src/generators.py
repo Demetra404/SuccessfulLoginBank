@@ -1,5 +1,9 @@
 def filter_by_currency(transactions, currency):
-    return  (transaction for transaction in transactions if transaction['operationAmount']['currency'].get('code') == currency)
+    if transactions and currency:
+        transaction_on_currency = (transaction for transaction in transactions if transaction['operationAmount']['currency'].get('code') == currency)
+        if transaction_on_currency:
+            return transaction_on_currency
+    return 0
 
 
 def transaction_descriptions(transactions):
