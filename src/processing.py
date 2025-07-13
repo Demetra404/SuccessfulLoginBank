@@ -15,6 +15,7 @@ def filter_by_state(transaction_data: List[Dict], state: str = 'EXECUTED') -> Li
 def sort_by_date(client_transactions: List[Dict], sort: bool = True) -> List[Dict]:
     """Функция возвращает список отсортированный по дате
     """
-    transactions_by_date = sorted(client_transactions, key=lambda date_operation: date_operation.get('date', ''), reverse=sort)
+    transactions_by_date = sorted(client_transactions,
+                                  key=lambda date_operation: date_operation.get('date', ''), reverse=sort)
 
     return transactions_by_date

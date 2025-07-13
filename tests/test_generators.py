@@ -1,40 +1,7 @@
-# Проект LoginBank
+import pytest
+from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
-## Описание:
-
-Проект LoginBank - это сервис на Python для работы с банковской системой.
-
-## Установка:
-
-1. Клонируйте репозиторий:
-```
-git clone https://github.com/Demetra404/SuccessfulLoginBank.git
-```
-2. Установите зависимости:
-```
-pip install -r requirements.txt
-```
-## Использование:
-
-## Документация:
-
-Для получения дополнительной информации обратитесь к [документации](docs/README.md).
-
-## Лицензия:
-
-## Тесты
-Запуск тестов:
-```bash
-
-pytest
-Для проверки функций 
-filter_by_currency
- и 
-transaction_descriptions
-:
-
-transactions = (
-    [
+values_for_test = [
         {
             "id": 939719570,
             "state": "EXECUTED",
@@ -111,4 +78,34 @@ transactions = (
             "to": "Счет 14211924144426031657"
         }
     ]
-)
+
+
+@pytest.mark.parametrize('test_filter, test_currency, value_filter', [(values_for_test, 'USD', {"id": 939719570,"state": "EXECUTED","date": "2018-06-30T02:08:58.425572","operationAmount": {"amount": "9824.07","currency": {"name": "USD","code": "USD"}},"description": "Перевод организации","from": "Счет 75106830613657916952","to": "Счет 11776614605963066702"})])
+def test_filter_currency(test_filter, test_currency, value_filter):
+    usd_transactions = filter_by_currency(test_filter, test_currency)
+    assert next(usd_transactions) == value_filter
+
+
+@pytest.mark.parametrize('test_transaction, description', [(values_for_test, 'Перевод организации')])
+def test_transaction_descriptions(test_transaction, description):
+    status_transactions = transaction_descriptions(test_transaction)
+    assert next(status_transactions) == description
+
+
+@pytest.mark.parametrize('value_start, value_stop, value_result', [(1, 5, '0000 0000 0000 0001')])
+def test_card_number_generator(value_start, value_stop, value_result):
+    test_generator = card_number_generator(value_start, value_stop)
+    assert next(test_generator) == value_result
+    for number in card_number_generator(value_start, value_stop):
+        print(number)
+
+
+@pytest.fixture
+def zero_value():
+    return []
+
+def test_transaction_descriptions_fix(zero_value):
+    assert transaction_descriptions(zero_value) == 0
+
+def test_filter_by_currency_fix(zero_value):
+    assert filter_by_currency(zero_value, 'USD') == 0
