@@ -18,7 +18,10 @@ def add_logfile(filename=None):
                         file.write(f'{logger.__name__} ok, start time: {time_1}, finish time: {time_2}\n')
                 else:
                     print(f'{logger.__name__} ok, start time: {time_1}, finish time: {time_2}\n')
-            return result
         return new_param
     return log
 
+@add_logfile()
+def my_function(a, b):
+    return a / b
+my_function( 10, 0)
