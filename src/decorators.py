@@ -1,10 +1,15 @@
 import time
-def add_logfile(filename=None):
-    def log(logger):
-        def new_param(*args, **kwargs):
+from typing import Any, Callable, Optional
+
+
+def add_logfile(filename: Optional[str]=None) ->  Callable[[Callable[..., Any]], Callable[..., Any]]:
+    '''Декоратор автоматически логирует начало и конец выполнения функции,
+     а также ее результаты или возникшие ошибки'''
+    def log(logger: Callable[..., Any]) -> Callable[..., Any]:
+        def new_param(*args: Any, **kwargs: Any) -> Any:
             try:
                 time_1 = time.time()
-                result = logger(*args, **kwargs)
+                logger(*args, **kwargs)
                 time_2 = time.time()
             except Exception as error:
                 if filename:
@@ -20,8 +25,3 @@ def add_logfile(filename=None):
                     print(f'{logger.__name__} ok, start time: {time_1}, finish time: {time_2}\n')
         return new_param
     return log
-
-@add_logfile()
-def my_function(a, b):
-    return a / b
-my_function( 10, 0)

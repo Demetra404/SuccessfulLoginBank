@@ -1,7 +1,7 @@
-from typing import Dict, List, Generator, Any
+from typing import Any, Dict, Generator, List
 
 
-def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dict] | int:
+def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dict, None, None] | int:
     """Функция возвращает итератор, поочередно выдающий транзакции, где валюта операции соответствует заданной
     """
     if transactions and currency:
@@ -12,7 +12,7 @@ def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dic
     return 0
 
 
-def transaction_descriptions(transactions: List[Dict]) -> Generator[Any, None] | int:
+def transaction_descriptions(transactions: List[Dict]) -> Generator[Any, Any, Any] | int:
     """Функция возвращает описание каждой операции по очереди
     """
     if transactions:
@@ -20,7 +20,7 @@ def transaction_descriptions(transactions: List[Dict]) -> Generator[Any, None] |
     return 0
 
 
-def card_number_generator(start: int, stop: int) -> Generator[str] | int:
+def card_number_generator(start: int, stop: int) -> Generator[str, None, None] | int:
     """Функция генерирует номера карт в заданном диапазоне"""
     start = start-1
     while start < stop:
@@ -33,4 +33,3 @@ def card_number_generator(start: int, stop: int) -> Generator[str] | int:
         new_card_number_gen = "".join(card_number_gen)
         yield new_card_number_gen
     return 0
-

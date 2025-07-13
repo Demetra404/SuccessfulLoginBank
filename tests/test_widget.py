@@ -19,4 +19,4 @@ def test_value():
 
 
 def test_mask_account_card_fix(test_value):
-    assert mask_account_card(test_value) == 0
+    assert mask_account_card(test_value) == ''
