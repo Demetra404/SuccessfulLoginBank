@@ -25,7 +25,6 @@ pip install -r requirements.txt
 ## Тесты
 Запуск тестов:
 ```bash
-
 pytest
 Для проверки функций 
 filter_by_currency
@@ -112,3 +111,13 @@ transactions = (
         }
     ]
 )
+```
+Реализован декоратор для записи в указаный файл
+для теста можно использовать
+```
+@log(filename="mylog.txt")
+def my_function(x, y):
+    return x + y
+
+my_function(1, 2)
+```
