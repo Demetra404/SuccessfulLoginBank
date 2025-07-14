@@ -1,9 +1,9 @@
 import pytest
 import time
-from src.decorators import add_logfile
+from src.decorators import log
 
 def test_add_logfile(capsys):
-    @add_logfile()
+    @log()
     def my_function(a, b):
         return a / b
     my_function(10, 2)
@@ -15,7 +15,7 @@ def test_add_logfile(capsys):
 
 def test_add_logfile_in_file(tmp_path):
     log_file = tmp_path / "test_logs.txt"
-    @add_logfile(filename=str(log_file))
+    @log(filename=str(log_file))
     def my_function(a, b):
         return a + b
     my_function(10, 2)
@@ -24,7 +24,7 @@ def test_add_logfile_in_file(tmp_path):
     assert "my_function ok" in content
 
 def test_add_logfile_errors(capsys):
-    @add_logfile()
+    @log()
     def my_function(a, b):
         return a / b
     my_function(10, 0)
