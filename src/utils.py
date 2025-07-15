@@ -1,8 +1,10 @@
 import json
 import os
+from typing import Any, Dict, List
 
-def get_dict_fin_trans(js_way):
-    empty_list = []
+
+def get_dict_fin_trans(js_way: str) -> List[Dict[str, Any]]:
+    empty_list: List[Dict[str, Any]] = []
     if not os.path.exists(js_way) or os.path.getsize(js_way) == 0:
         finance_transactions = empty_list
     else:
