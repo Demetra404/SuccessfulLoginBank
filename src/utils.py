@@ -11,7 +11,3 @@ def get_dict_fin_trans(js_way):
             if not isinstance(finance_transactions, list):
                 finance_transactions = empty_list
     return finance_transactions
-
-
-
-
