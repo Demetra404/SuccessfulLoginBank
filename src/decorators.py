@@ -2,7 +2,7 @@ import time
 from typing import Any, Callable, Optional
 
 
-def log(filename: Optional[str]=None) ->  Callable[[Callable[..., Any]], Callable[..., Any]]:
+def log(filename: Optional[str] = None) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     '''Декоратор автоматически логирует начало и конец выполнения функции,
      а также ее результаты или возникшие ошибки'''
     def log_file(logger: Callable[..., Any]) -> Callable[..., Any]:
