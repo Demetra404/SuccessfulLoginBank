@@ -9,6 +9,7 @@ console_handler.setFormatter(console_formatter)
 logger.addHandler(console_handler)
 logger.setLevel(logging.DEBUG)
 
+
 def get_mask_card_number(number_card: int) -> str | int:
     """Функция маскировки номера банковской карты
     """

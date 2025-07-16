@@ -1,15 +1,16 @@
 import json
-import os
 import logging
+import os
 from typing import Any, Dict, List
 
 logs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'logs', 'utils.log')
 logger = logging.getLogger('utils')
 logger.setLevel(logging.DEBUG)
-console_handler = logging.FileHandler(logs_dir,  mode='w',encoding='utf-8')
+console_handler = logging.FileHandler(logs_dir, mode='w', encoding='utf-8')
 console_formatter = logging.Formatter('%(asctime)s %(levelname)s %(name)s %(lineno)d: %(message)s')
 console_handler.setFormatter(console_formatter)
 logger.addHandler(console_handler)
+
 
 def get_dict_fin_trans(js_way: str) -> List[Dict[str, Any]]:
     empty_list: List[Dict[str, Any]] = []
