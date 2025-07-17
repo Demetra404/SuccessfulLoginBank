@@ -1,35 +1,6 @@
 import pandas as pd
 from src.reader_files import get_read_excel,get_read_csv
 from unittest.mock import Mock,patch
-'''def test_get_dict_fin_trans(mock_get):
-    path_simple = 'C:\\Users\\Radin\\PycharmProjects\\SuccessfulLoginBank\\data\\operations.json'
-    list_right = [{'key':'value'}]
-    mock_get.return_value = list_right
-    assert get_dict_fin_trans(path_simple) == [{'key':'value'}]
-    mock_get.return_value= []
-    assert get_dict_fin_trans(path_simple) == []
-    assert get_dict_fin_trans(path_simple) == []
-    assert get_dict_fin_trans(path_simple) == []
-    import pandas as pd
-
-
-def get_read_csv(path_csv):
-    try:
-        read_csv_file = pd.read_csv(path_csv, sep=';')
-        convert_csv_dict = read_csv_file.to_dict(orient="records")
-        return convert_csv_dict
-    except FileNotFoundError as cvs_name:
-        print(f"Файл {cvs_name} не найден.")
-    return 0
-def get_read_excel(path_xlsx):
-    try:
-        read_csv_file = pd.read_excel(path_xlsx)
-        convert_excel_dict = read_csv_file.to_dict(orient="records")
-        return convert_excel_dict
-    except FileNotFoundError as xlsx_file:
-        print(f"Файл {xlsx_file} не найден.")
-    return 0
-    '''
 
 
 @patch('pandas.read_csv')
