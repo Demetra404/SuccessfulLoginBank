@@ -1,6 +1,7 @@
 
-import pandas as pd
 from typing import Any, Dict, List, Union
+
+import pandas as pd
 
 
 def get_read_csv(path_csv: str) -> Union[List[Dict[Any, Any]], int]:

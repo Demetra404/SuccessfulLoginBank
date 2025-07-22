@@ -11,6 +11,7 @@ def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dic
             return transaction_on_currency
     return 0
 
+
 def filter_by_currency_by_cvs_and_xlml(transactions: List[Dict], currency: str) -> Generator[Dict, None, None] | int:
     """Функция возвращает итератор, поочередно выдающий транзакции, где валюта операции соответствует заданной для cvs
     """
