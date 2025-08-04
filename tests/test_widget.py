@@ -1,7 +1,7 @@
 import pytest
 from src.widget import mask_account_card,get_date
 
-@pytest.mark.parametrize('account_card, mask_card', [('Maestro 1596837868705199', 'Maestro 1596 83** **** 5199'),('Счет 64686473678894779589', 'Счет **9589'),('MasterCard 7158300734726758', 'MasterCard 7158 30** **** 6758'),('Счет 35383033474447895560', 'Счет **5560'), ('', 0), ('adadsefw 35383033474447895560', 'adadsefw **5560')])
+@pytest.mark.parametrize('account_card, mask_card', [('Maestro 1596837868705199', 'Maestro 1596 83** **** 5199'),('Счет 64686473678894779589', 'Счет **9589'),('MasterCard 7158300734726758', 'MasterCard 7158 30** **** 6758'),('Счет 35383033474447895560', 'Счет **5560'), ('', ''), ('adadsefw 35383033474447895560', 'adadsefw **5560')])
 def test_mask_account_card(account_card: str, mask_card: str):
     assert mask_account_card(account_card) == mask_card
 def test_digit_info():

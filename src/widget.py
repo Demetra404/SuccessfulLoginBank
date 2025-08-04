@@ -8,7 +8,7 @@ def mask_account_card(card_info: str) -> str | int:
     name_card = []
     if isinstance(card_info, (int, float)):
         raise ValueError("Информация о карте или счёте должна быть строкой")
-    if card_info > '':
+    if card_info is not None:
         inform_about_card = ''
         for char in card_info:
             if char.isdigit():
